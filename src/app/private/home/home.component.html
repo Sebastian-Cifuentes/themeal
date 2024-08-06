@@ -1,29 +1,30 @@
-
-<form [formGroup]="form">
-  <ion-list>
-    <ion-item>
-      <ion-input formControlName="name" label="Search by name" labelPlacement="floating" placeholder="Dish name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-select formControlName="category" aria-label="Categories" interface="popover" placeholder="Search by category">
-        @for (category of categories; track $index) {
-          <ion-select-option [value]="category.strCategory">{{category.strCategory}}</ion-select-option>
-        }
-      </ion-select>
-    </ion-item>
-
-    @if (loading) {
-      <app-loading></app-loading>
-    }
-
-    @if (meals.length === 0 && !loading) {
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list>
       <ion-item>
-        <ion-label>Doesn't exists any meals with this filter</ion-label>
+        <ion-input formControlName="name" label="Search by name" labelPlacement="floating" placeholder="Dish name"></ion-input>
       </ion-item>
-    }
-    
-    @if (meals.length > 0 && !loading) {
-      <app-dishes-list [meals]="meals"></app-dishes-list>
-    }
-  </ion-list>
-</form>
+      <ion-item>
+        <ion-select formControlName="category" aria-label="Categories" interface="popover" placeholder="Search by category">
+          @for (category of categories; track $index) {
+            <ion-select-option [value]="category.strCategory">{{category.strCategory}}</ion-select-option>
+          }
+        </ion-select>
+      </ion-item>
+  
+      @if (loading) {
+        <app-loading></app-loading>
+      }
+  
+      @if (meals.length === 0 && !loading) {
+        <ion-item>
+          <ion-label>Doesn't exists any meals with this filter</ion-label>
+        </ion-item>
+      }
+      
+      @if (meals.length > 0 && !loading) {
+        <app-dishes-list [meals]="meals"></app-dishes-list>
+      }
+    </ion-list>
+  </form>
+</ion-content>

@@ -10,7 +10,6 @@ import { LocalstorageService } from '../../services/localstorage.service';
 /** Interfaces */
 import { Category } from '../../interfaces/category.interface';
 import { Meal } from '../../interfaces/meal.interface';
-import { History } from '../../interfaces/history';
 
 @Component({
   selector: 'app-home',
@@ -35,15 +34,17 @@ export class HomeComponent  implements OnInit, OnDestroy {
 
   constructor(
     private _dataService: DataService,
-    private _localStorageService: LocalstorageService,
-    private router: Router
+    private _localStorageService: LocalstorageService
   ) {}
 
   async ngOnInit() {
     this.initForm();
     this.setupSubscriptions();
-    this.searchByLastFilter();
     await this.getCategories();
+  }
+  
+  ionViewWillEnter() {
+    this.searchByLastFilter();
   }
 
   ngOnDestroy(): void {
@@ -69,8 +70,8 @@ export class HomeComponent  implements OnInit, OnDestroy {
       .subscribe(async(value) => {
         if (value) {
           this.categoryControl.reset();
-          this._localStorageService.setLastRegister({value, filterBy: 'name'});
           await this.searchByName();
+          this._localStorageService.setLastRegister({value, filterBy: 'name'});
         }
       });
 
@@ -84,8 +85,8 @@ export class HomeComponent  implements OnInit, OnDestroy {
       .subscribe(async(value) => {
         if (value) {
           this.nameControl.reset();
-          this._localStorageService.setLastRegister({value, filterBy: 'category'});
           await this.searchByCategory();
+          this._localStorageService.setLastRegister({value, filterBy: 'category'});
         }
       });
   }
@@ -96,10 +97,10 @@ export class HomeComponent  implements OnInit, OnDestroy {
       return;
     }
     const typeOfFilter: any = {
-      name: this.nameControl.patchValue(lastFilter.value),
-      category: this.categoryControl.patchValue(lastFilter.value)
+      category: this.categoryControl,
+      name: this.nameControl,
     }
-    typeOfFilter[lastFilter.filterBy];
+    typeOfFilter[lastFilter.filterBy].patchValue(lastFilter.value);
   }
 
   async getCategories() {

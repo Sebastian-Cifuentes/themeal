@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 /** Interfaces */
@@ -14,23 +14,18 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss'],
 })
-export class HistoryComponent  implements OnInit {
+export class HistoryComponent {
 
-  destroy = new Subject<any>;
   history: History[] = [];
 
   constructor(
     private router: Router,
     private _localStorageService: LocalstorageService
   ) {
-    this._localStorageService.historyObservable
-      .pipe(takeUntil(this.destroy))
-      .subscribe(() => {
-        this.setHistory()
-      })
+
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.setHistory();
   }
   

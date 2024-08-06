@@ -8,8 +8,6 @@ import { Subject } from 'rxjs';
 })
 export class LocalstorageService {
 
-  historyObservable = new Subject<boolean>;
-
   constructor() { }
 
   /** Get history from localStorage */
@@ -28,7 +26,6 @@ export class LocalstorageService {
     }
     history.push(register);
     localStorage.setItem('history', JSON.stringify(history));
-    this.historyObservable.next(true);
   }
 
   /** Get last value register from localStorage */

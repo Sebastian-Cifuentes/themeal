@@ -1,20 +1,23 @@
 
-<ion-list>
-  <ion-item (click)="returnToHome()" onkeyup="returnToHome()">
-    <ion-button class="flex" fill="clear" size="small">
-      <ion-icon slot="start" name="arrow-back"></ion-icon>
-      Return to home
-    </ion-button>
-  </ion-item>
-  @if(history.length > 0) {
-    @for(register of history; track $index) {
-      <ion-item (click)="setLastRegister(register)" onkeyup="setLastRegister(register)">
-        <ion-label>Filter by {{ register.filterBy }} with value of {{ register.value }}</ion-label>
+<ion-item (click)="returnToHome()" onkeyup="returnToHome()">
+  <ion-button class="flex" fill="clear" size="small">
+    <ion-icon slot="start" name="arrow-back"></ion-icon>
+    Return to home
+  </ion-button>
+</ion-item>
+
+<ion-content>
+  <ion-list>
+    @if(history.length > 0) {
+      @for(register of history; track $index) {
+        <ion-item (click)="setLastRegister(register)" onkeyup="setLastRegister(register)">
+          <ion-label>Filter by {{ register.filterBy }} with value of {{ register.value }}</ion-label>
+        </ion-item>
+      }
+    } @else {
+      <ion-item>
+        <ion-label>The history is empty</ion-label>
       </ion-item>
     }
-  } @else {
-    <ion-item>
-      <ion-label>The history is empty</ion-label>
-    </ion-item>
-  }
-</ion-list>
+  </ion-list>
+</ion-content>
