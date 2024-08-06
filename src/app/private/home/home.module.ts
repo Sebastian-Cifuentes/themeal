@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 /** Components */
 import { ComponentsModule } from '../../components/components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     IonicModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     ComponentsModule
   ]

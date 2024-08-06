@@ -1,35 +1,35 @@
 
-<ion-item>
+<ion-item (click)="returnToHome()" onkeyup="returnToHome()">
   <ion-button class="flex" fill="clear" size="small">
-    <ion-icon slot="start" name="star"></ion-icon>
+    <ion-icon slot="start" name="arrow-back"></ion-icon>
     Return to home
   </ion-button>
 </ion-item>
 
 <ion-list>
-  <img width="700" alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <img width="700" [alt]="meal.strMeal" [src]="meal.strMealThumb" />
   <ion-item>
     <ion-label>
       <p>Dish name</p>
-      <h2>Hawaii</h2>
+      <h2>{{meal.strMeal}}</h2>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
       <p>Category</p>
-      <h2>Hawaii</h2>
+      <h2>{{meal.strCategory}}</h2>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
       <p>Native Country</p>
-      <h2>Hawaii</h2>
+      <h2>{{meal.strArea}}</h2>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
       <p>Instructions</p>
-      <h2>Hawaii Hawaii Hawaii Hawaii</h2>
+      <h2>{{ meal.strInstructions }}</h2>
     </ion-label>
   </ion-item>
 </ion-list>
