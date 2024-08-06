@@ -42,4 +42,9 @@ export class HistoryComponent {
     this.router.navigateByUrl('index');
   }
 
+  deleteHistory() {
+    this._localStorageService.deleteHistory();
+    this.history = [];
+  }
+
 }

@@ -41,5 +41,11 @@ export class LocalstorageService {
     localStorage.setItem('lastregister', JSON.stringify(register));
   }
 
+  /**
+   * Delete history register from localStorage
+   */
+  deleteHistory() {
+    localStorage.removeItem('history');
+  }
 
 }
