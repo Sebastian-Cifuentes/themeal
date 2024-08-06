@@ -1,3 +1,13 @@
-<p>
-  home works!
-</p>
+<ion-list>
+  <ion-item>
+    <ion-input label="Search by name" labelPlacement="floating" placeholder="Dish name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-select aria-label="Categories" interface="popover" placeholder="Select categories" [multiple]="true">
+      <ion-select-option value="apples">Apples</ion-select-option>
+      <ion-select-option value="oranges">Oranges</ion-select-option>
+      <ion-select-option value="bananas">Bananas</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <app-dishes-list></app-dishes-list>
+</ion-list>

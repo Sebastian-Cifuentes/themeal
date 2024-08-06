@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+
+/** Components */
+import { ComponentsModule } from '../../components/components.module';
 
 const routes: Routes = [
   {
@@ -11,10 +15,12 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    IonicModule,
+    RouterModule.forChild(routes),
+    ComponentsModule
   ]
 })
 export class HomeModule { }
