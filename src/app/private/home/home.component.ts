@@ -91,7 +91,7 @@ export class HomeComponent  implements OnInit, OnDestroy {
       });
   }
 
-  private searchByLastFilter() {
+  searchByLastFilter() {
     const lastFilter = this._localStorageService.getLastRegister();
     if (!lastFilter) {
       return;

@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.meal = this.router.getCurrentNavigation()!.extras.state as Meal;
+    this.meal = this.router.getCurrentNavigation()?.extras.state as Meal;
   }
 
   returnToHome() {
